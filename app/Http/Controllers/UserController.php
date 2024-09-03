@@ -10,7 +10,21 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index', compact('users'));
     }
-    public function edit(){
-        return view('users.edit');
+    public function edit(User $user){
+        return view('users.edit', compact('user'));
+    }
+    public function create(){
+      
+      $user = new User();
+      return view('users.create', compact('user'));
+      
+    }
+    public function show(User $user){
+        return view('users.show', compact('user'));
+    }
+    public function store(Request $request){
+        $data = $request->all();
+        User::create($data);
+        return redirect()->route('users.index');
     }
 }

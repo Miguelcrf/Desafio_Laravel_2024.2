@@ -20,13 +20,11 @@ Usuários Cadastrados
                     </div>
                 </div>
            <span class="d-flex">
-            <button class="btn btn-info btn-sm" onclick="tuggleinput(
-                document.getElementById(input-nome-user-${user->id}) .remoteAtributte('hidden');
-                document.getElementById(nome-user-${user->id}); .hidden=true;
-)"> 
-                <i class="fas fa-edit"></i>
-</button>
-                <a href="#" class="btn btn-info btn-sm">
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">
+            <i class="fas fa-edit"></i>
+            </a>
+
+                <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
                 <form method="post" action="/usuarios/remover/{{$user->id}}"
@@ -48,3 +46,6 @@ Usuários Cadastrados
         @endforeach
          </ul>
 @endsection
+
+
+

@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\TransferenciaController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,4 +24,6 @@ Route::get('/usuarios/{user}', [UserController::class, 'show'])->name('users.sho
 Route::post('/usuarios', [UserController::class, 'store'])->name('users.store');
 Route::put('/usuarios/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/usuarios/remover/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/transferencia', [TransferenciaController::class, 'index'])->name('transferencia.index');
+Route::post('/transferencia', [TransferenciaController::class, 'transferir'])->name('transferencia.processo');
 require __DIR__.'/auth.php';
