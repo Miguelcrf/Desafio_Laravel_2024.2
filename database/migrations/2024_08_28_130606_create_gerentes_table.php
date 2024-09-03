@@ -19,9 +19,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('endereço');
-            $table->integer('telefone');
+            $table->string('telefone');
             $table->date('nascimento');
-            $table->integer('cpf');
+            $table->string('cpf');
             
 
             $table->foreignId('conta_id')->constrained();

@@ -24,6 +24,8 @@ class UserController extends Controller
     }
     public function store(Request $request){
         $data = $request->all();
+        $data->gerente_id = 1;
+        dd($data);
         User::create($data);
         return redirect()->route('users.index');
     }
