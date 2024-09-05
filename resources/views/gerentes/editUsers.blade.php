@@ -13,7 +13,7 @@
                         <form action="">
                             
                                 <legend>
-                                    <b>Editar seu Perfil</b>
+                                    <b>Editar um Cliente</b>
                                 </legend>
                                 <br>
                                 <div class="inputBox">

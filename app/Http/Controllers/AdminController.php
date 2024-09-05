@@ -17,18 +17,32 @@ class AdminController extends Controller
         $users = User::all();
         return view('admins.indexGerentes', compact('gerentes'), compact('users'));
     }
+    public function indexAdmins(){
+        $admins = Admin::all();
+        return view('admins.indexAdmins', compact('admins'));
+    }
 
-    public function edit(User $user){
-        return view('users.edit', compact('user'));
+    public function edit(){
+        return view('admins.edit');
+    }
+    public function editUsers(){
+        return view('admins.editUsers');
+    }
+    public function editGerentes(){
+        return view('admins.editGerentes');
     }
     public function create(){
-      
-      $user = new User();
-      return view('users.create', compact('user'));
-      
+        return view('admins.create');
     }
+    public function createGerentes(){
+        return view('admins.createGerentes');
+    }
+    public function createUsers(){
+        return view('admins.createUsers');
+    }
+
     public function show(User $user){
-        return view('users.show', compact('user'));
+        return view('users.show');
     }
     public function store(Request $request){
         $data = $request->all();

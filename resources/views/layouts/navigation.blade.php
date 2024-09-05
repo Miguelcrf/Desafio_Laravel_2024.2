@@ -18,6 +18,25 @@
                     <x-nav-link :href="route('admins.gerentes.index')" :active="request()->routeIs('admins.gerentes.index')">
                         {{ __('Gerentes') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admins.administradores.index')" :active="request()->routeIs('admins.administradores.index')">
+                        {{ __('Administradores') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
+                        {{ __('logout') }}
+                    </x-nav-link>
+                    @endif
+                    @if(Auth::guard('web')->check())
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('Perfil') }}
+                    </x-nav-link>
+                    @endif
+                    @if(Auth::guard('gerente')->check())
+                    <x-nav-link :href="route('gerentes.index')" :active="request()->routeIs('gerentes.users.index')">
+                        {{ __('Perfil') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('gerentes.users.index')" :active="request()->routeIs('gerentes.users.index')">
+                        {{ __('Usuários') }}
+                    </x-nav-link>
                     @endif
                 </div>
             </div>

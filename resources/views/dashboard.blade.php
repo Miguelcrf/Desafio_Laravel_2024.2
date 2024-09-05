@@ -9,7 +9,16 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    @if(Auth::guard('admin')->check())
+                    {{ __("Você está logado como administrador!") }}
+                    @endif
+                    @if(Auth::guard('web')->check())
+                    {{ __("Você está logado como usuário!") }}
+                    @endif
+                    @if(Auth::guard('gerente')->check())
+                    {{ __("Você está logado como gerente!") }}
+                    @endif
+
                 </div>
             </div>
         </div>
