@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('contas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('agencia');
+            $table->string('numero');
+            $table->double('saldo');
+            $table->double('limite');
+            $table->string('password');
+            
         });
     }
 

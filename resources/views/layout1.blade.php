@@ -9,6 +9,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
+@include('layouts.navigation')
 <div class="container">
         <div class="jumbotron">
             <h1>@yield('cabecalho')</h1> <?php //@yield serve para dizer a sessao que estara naquele espaço ?>

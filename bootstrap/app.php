@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\UserAuthenticator;
+use App\Http\Middleware\GerenteAuthenticator;
+use App\Http\Middleware\AdminAuthenticator;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,7 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'user' => UserAuthenticator::class,
+            'gerente' => GerenteAuthenticator::class,
+            'admin' => AdminAuthenticator::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

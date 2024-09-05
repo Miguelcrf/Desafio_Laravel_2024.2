@@ -5,7 +5,8 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
+Use App\Models\Conta;
+Use App\Models\Gerente;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -23,12 +24,23 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $gerente = Gerente::pluck('id')->toArray();
+        $conta = Conta::factory()->create();
+        
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
+            'endereço' => $this->faker->address(),
+            'telefone' => $this->faker->phoneNumber(),
+            'nascimento' => $this->faker->date(),
+            'cpf' => fake()->numerify('###.###.###-##'),
+            'gerente_id' => fake()->randomElement($gerente),
+            'conta_id' => $conta->id
+
+
         ];
     }
 

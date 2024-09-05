@@ -9,4 +9,11 @@ class Conta extends Model
 {
     use HasFactory;
     protected $table = 'contas';
+    protected $fillable = [
+       'agencia',
+       'numero',
+       'saldo',
+       'limite',
+       'password' 
+    ];
 }
