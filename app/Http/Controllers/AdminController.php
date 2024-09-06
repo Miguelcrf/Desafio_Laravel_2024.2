@@ -71,10 +71,8 @@ class AdminController extends Controller
     }
 
     public function storeGerentes(Request $request){
-        $conta = Conta::create([
-            'agencia' => gerarAgencia();
-            
-        ]);
+        
+           
         User::create([
             'name' => $request->name,
             'gerente' => Auth::guard('gerente')->user()->id,
