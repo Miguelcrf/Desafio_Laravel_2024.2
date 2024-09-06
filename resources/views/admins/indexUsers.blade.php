@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                <a href="/usuarios/create" class="btn btn-dark  mb-2">Criar</a> <?php //mb é margin bottom?>
+                <a href="{{Route('admins.usuarios.create')}}" class="btn btn-dark  mb-2">Criar</a> <?php //mb é margin bottom?>
     <ul class="list-group">
         @foreach($users as $user)          
             <li class="list-group-item d-flex ml-6 justify-content-between align-items-center" >
@@ -23,7 +23,7 @@
                     </div>
                 </div>
            <span class="d-flex">
-                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">
+                <a href="{{ route('admins.usuarios.edit') }}" class="btn btn-info btn-sm">
             <i class="fas fa-edit"></i>
             </a>
 

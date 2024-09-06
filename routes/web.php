@@ -30,6 +30,7 @@ Route::middleware('gerente')->group(function(){
     Route::get('/gerentes/user/edit', [GerentesController::class, 'editUsers'])->name('gerentes.users.edit');
     Route::get('/gerentes/user/create', [GerentesController::class, 'createUsers'])->name('gerentes.users.create');
     Route::get('/gerentes/edit', [GerentesController::class, 'edit'])->name('gerentes.edit');
+    Route::post('/gerentes', [GerentesController::class, 'store'])->name('gerentes.store');
 
 });
 
@@ -43,9 +44,16 @@ Route::middleware('admin')->group(function(){
     Route::get('/admins/create', [AdminController::class, 'create'])->name('admins.create');
     Route::get('/admins/create/gerentes', [AdminController::class, 'createGerentes'])->name('admins.gerentes.create');
     Route::get('/admins/create/usuarios', [AdminController::class, 'createUsuarios'])->name('admins.usuarios.create');
-    Route::get('/admins/edit', [AdminController::class, 'edit'])->name('admins.edit');
+    Route::get('/admins/edit/{admin}', [AdminController::class, 'edit'])->name('admins.edit');
     Route::get('/admins/edit/gerentes', [AdminController::class, 'editGerentes'])->name('admins.gerentes.edit');
     Route::get('/admins/edit/usuarios', [AdminController::class, 'editUsuarios'])->name('admins.usuarios.edit');
+    Route::get('/admins/{admin}', [AdminController::class, 'show'])->name('admins.show');
+    Route::get('/admins/gerentes/{gerente}', [AdminController::class, 'showGerentes'])->name('admins.gerentes.show');
+    Route::get('/admins/usuarios/{user}', [AdminController::class, 'showUsuarios'])->name('admins.users.show');
+    Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
+    Route::post('/admins', [AdminController::class, 'storeGerentes'])->name('admins.gerentes.store');
+    Route::post('/admins', [AdminController::class, 'storeUsuarios'])->name('admins.users.store');
+
     
 });
 
@@ -53,14 +61,14 @@ Route::middleware('admin')->group(function(){
 Route::get('/usuarios/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::get('/usuarios/create', [UserController::class, 'create'])->name('users.create');
 Route::get('/usuarios/{user}', [UserController::class, 'show'])->name('users.show');
-Route::post('/usuarios', [UserController::class, 'store'])->name('users.store');
+Route::post('/usuarios/create', [UserController::class, 'store'])->name('users.store');
 Route::put('/usuarios/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/usuarios/remover/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::get('/transferencia', [TransferenciaController::class, 'index'])->name('transferencia.index');
 Route::post('/transferencia', [TransferenciaController::class, 'transferir'])->name('transferencia.processo');
 
 
-Route::get('/admins/edit', [AdminController::class, 'edit'])->name('admins.edit');
+
 Route::get('/admins/create', [AdminController::class, 'create'])->name('admins.create');
 Route::get('/admins/{user}', [AdminController::class, 'show'])->name('admins.show');
 Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');

@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Gerente;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -22,11 +23,12 @@ class AdminController extends Controller
         return view('admins.indexAdmins', compact('admins'));
     }
 
-    public function edit(){
-        return view('admins.edit');
+    public function edit(Admin $admin){
+        return view('admins.edit', compact('admin'));
     }
-    public function editUsers(){
-        return view('admins.editUsers');
+    public function editUsuarios(){
+        $gerentes = Gerente::all();
+        return view('admins.editUsers', compact('gerentes'));
     }
     public function editGerentes(){
         return view('admins.editGerentes');
@@ -37,18 +39,46 @@ class AdminController extends Controller
     public function createGerentes(){
         return view('admins.createGerentes');
     }
-    public function createUsers(){
-        return view('admins.createUsers');
+    public function createUsuarios(){
+        $gerentes = Gerente::all();
+        return view('admins.createUsers', compact('gerentes'));
     }
 
-    public function show(User $user){
-        return view('users.show');
+    public function show(Admin $admin){
+        return view('admins.show', compact('admin'));
+    }
+    public function showGerentes(User $user){
+        return view('admins.showGerentes');
+    }
+    public function showUsuarios(User $user){
+        return view('admins.showUsers');
     }
     public function store(Request $request){
-        $data = $request->all();
-        $data->gerente_id = 1;
-        dd($data);
-        User::create($data);
+        
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'endereço' => $request->endereço,
+            'cpf' => $request->cpf,
+            'telefone' => $request->telefone,
+            'nascimento' => $request->nascimento
+
+        ]);
+        
+        
         return redirect()->route('users.index');
     }
+
+    public function storeGerentes(Request $request){
+        $conta = Conta::create([
+            
+        ]);
+        User::create([
+            'name' => $request->name,
+            'gerente' => Auth::guard('gerente')->user()->id,
+            'conta_id' => $conta->id,
+
+        ]);
+}
 }

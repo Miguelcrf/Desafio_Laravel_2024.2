@@ -22,16 +22,5 @@ class UserController extends Controller
     public function show(User $user){
         return view('users.show', compact('user'));
     }
-    public function store(Request $request){
-        $conta = Conta::create([
-
-        ]);
-        User::create([
-            'name' => $request->name,
-            'gerente' => Auth::guard('gerente')->user()->id,
-            'conta_id' => $conta->id,
-
-        ]);
-        return redirect()->route('users.index');
-    }
+    
 }

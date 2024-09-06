@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-@include('layouts.navigation')
+    @include('layouts.navigation')
 <div class="flex justify-center items-center w-full h-full">
         <div class="flex flex-col bg-[#ff1111] rounded-lg w-3/5 h-full">
             <h2 class="pt-24 pb-24 pl-32 pr-32 text-2xl text-white">CRIAR USUÁRIO</h2>  
