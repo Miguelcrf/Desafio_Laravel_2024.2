@@ -41,17 +41,25 @@ Route::middleware('admin')->group(function(){
     Route::get('/admins/usuarios', [AdminController::class, 'indexUsers'])->name('admins.users.index');
     Route::get('/admins/gerentes', [AdminController::class, 'indexGerentes'])->name('admins.gerentes.index');
     Route::get('/admins/administradores', [AdminController::class, 'indexAdmins'])->name('admins.administradores.index');
+
     Route::get('/admins/create', [AdminController::class, 'create'])->name('admins.create');
     Route::get('/admins/create/gerentes', [AdminController::class, 'createGerentes'])->name('admins.gerentes.create');
     Route::get('/admins/create/usuarios', [AdminController::class, 'createUsuarios'])->name('admins.usuarios.create');
+
     Route::get('/admins/edit/{admin}', [AdminController::class, 'edit'])->name('admins.edit');
-    Route::get('/admins/edit/gerentes', [AdminController::class, 'editGerentes'])->name('admins.gerentes.edit');
-    Route::get('/admins/edit/usuarios', [AdminController::class, 'editUsuarios'])->name('admins.usuarios.edit');
+    Route::get('/admins/edit/gerentes/{gerente}', [AdminController::class, 'editGerentes'])->name('admins.gerentes.edit');
+    Route::get('/admins/edit/usuarios/{usuario}', [AdminController::class, 'editUsuarios'])->name('admins.usuarios.edit');
+
+    Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
+    Route::put('/admins/{gerente}', [AdminController::class, 'updateGerentes'])->name('admins.gerentes.update');
+    Route::put('/admins/{user}', [AdminController::class, 'updateUsuarios'])->name('admins.usuarios.update');
+
     Route::get('/admins/{admin}', [AdminController::class, 'show'])->name('admins.show');
     Route::get('/admins/gerentes/{gerente}', [AdminController::class, 'showGerentes'])->name('admins.gerentes.show');
-    Route::get('/admins/usuarios/{user}', [AdminController::class, 'showUsuarios'])->name('admins.users.show');
+    Route::get('/admins/usuarios/{user}', [AdminController::class, 'showUsuarios'])->name('admins.usuarios.show');
+    
     Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
-    Route::post('/admins', [AdminController::class, 'storeGerentes'])->name('admins.gerentes.store');
+    Route::post('/admins/gerentes', [AdminController::class, 'storeGerentes'])->name('admins.gerentes.store');
     Route::post('/admins', [AdminController::class, 'storeUsuarios'])->name('admins.users.store');
 
     
@@ -70,9 +78,8 @@ Route::post('/transferencia', [TransferenciaController::class, 'transferir'])->n
 
 
 Route::get('/admins/create', [AdminController::class, 'create'])->name('admins.create');
-Route::get('/admins/{user}', [AdminController::class, 'show'])->name('admins.show');
+
 Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
-Route::put('/admins/{user}', [AdminController::class, 'update'])->name('admins.update');
 Route::delete('/admins/remover/{user}', [AdminController::class, 'destroy'])->name('admins.destroy');
 
 

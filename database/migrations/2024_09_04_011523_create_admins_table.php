@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('telefone');
             $table->date('nascimento');
             $table->string('cpf');
+            
+            
 
             $table->rememberToken();
             $table->timestamps();

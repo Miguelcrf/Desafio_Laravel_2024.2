@@ -16,18 +16,15 @@
                 <div class="input-group w-50" hidden id="input-nome-user-{{$user->id}}">
                     <input type="text" class="form-control" value="{{$user->name}}">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" onclick="editarSerie({{$user->id}})">
-                        <i class="fas fa-check"></i>
-                        </button>
                         @csrf
                     </div>
                 </div>
            <span class="d-flex">
-                <a href="{{ route('admins.usuarios.edit') }}" class="btn btn-info btn-sm">
+                <a href="{{ route('admins.usuarios.edit', $user->id) }}" class="btn btn-info btn-sm">
             <i class="fas fa-edit"></i>
             </a>
 
-                <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm">
+                <a href="{{ route('admins.usuarios.show', $user->id) }}" class="btn btn-info btn-sm">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
                 <form method="post" action="/usuarios/remover/{{$user->id}}"

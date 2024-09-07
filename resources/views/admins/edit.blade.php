@@ -25,37 +25,37 @@
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" id="email" class="inputUser" required>
+                                    <input type="text" name="email" id="email" class="inputUser" value="{{$admin->email}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="password">Senha</label>
-                                    <input type="password" name="password" id="password" class="inputUser" required>
+                                    <input type="password" name="password" id="password" class="inputUser" value="{{$admin->password}}"required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="endereço">Endereço</label>
-                                    <input type="text" name="endereço" id="endereço" class="inputUser" placeholder="Rua xxx, numero xxxx" required>
+                                    <input type="text" name="endereço" id="endereço" class="inputUser" value="{{$admin->endereço}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" name="cpf" id="cpf" class="cpf" placeholder="xxx.xxx.xxx-xx" required>
+                                    <input type="text" name="cpf" id="cpf" class="cpf" value="{{$admin->cpf}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="telefone">Telefone</label>
-                                    <input type="tel" name="telefone" id="telefone" class="inputUser" required>
+                                    <input type="tel" name="telefone" id="telefone" class="inputUser" value="{{$admin->telefone}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="nascimento"><b>Data de Nascimento:</b></label>
-                                    <input type="date" name="nascimento" id="nascimento" class="inputUser" required>
+                                    <input type="date" name="nascimento" id="nascimento" class="inputUser" value="{{$admin->nascimento}}" required>
                                     
                                 </div>
                                 <br><br>

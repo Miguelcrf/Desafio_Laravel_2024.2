@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="">
+                        <form action="{{Route('admins.gerentes.update', $gerente->id)}}">
                             
                                 <legend>
                                     <b>Editar Gerente</b>
@@ -19,43 +19,42 @@
                                 <div class="inputBox">
                                     <br>
                                     <label for="name">Nome Completo</label>
-                                    <input type="text" name="name" id="name" class="inputUser" required>
+                                    <input type="text" name="name" id="name" class="inputUser" value="{{$gerente->name}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" id="email" class="inputUser" required>
+                                    <input type="text" name="email" id="email" class="inputUser" value="{{$gerente->email}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="password">Senha</label>
-                                    <input type="password" name="password" id="password" class="inputUser" required>
+                                    <input type="password" name="password" id="password" class="inputUser" value="{{$gerente->password}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="endereço">Endereço</label>
-                                    <input type="text" name="endereço" id="endereço" class="inputUser" placeholder="Rua xxx, numero xxxx" required>
-                                    
+                                    <input type="text" name="endereço" id="endereço" class="inputUser" value="{{$gerente->endereço}}" >
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" name="cpf" id="cpf" class="cpf" placeholder="xxx.xxx.xxx-xx" required>
+                                    <input type="text" name="cpf" id="cpf" class="cpf" value="{{$gerente->cpf}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="telefone">Telefone</label>
-                                    <input type="tel" name="telefone" id="telefone" class="inputUser" required>
+                                    <input type="tel" name="telefone" id="telefone" class="inputUser" value="{{$gerente->telefone}}" required>
                                     
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="nascimento"><b>Data de Nascimento:</b></label>
-                                    <input type="date" name="nascimento" id="nascimento" class="inputUser" required>
+                                    <input type="date" name="nascimento" id="nascimento" class="inputUser" value="{{$gerente->nascimento}}" required>
                                     
                                 </div>
                                 <br><br>

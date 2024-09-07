@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Visualização de Administradores') }}
+            {{ __('Visualização de Gerentes') }}
             <br>
         </h2>
     </x-slot>
@@ -14,27 +14,28 @@
                         <form action="">
                             
                             <legend>
-                                <b>Visualizar Administrador</b>
+                                <b>Visualizar Gerente</b>
                                 
                             </legend>
                             <b>Nome:</b>
                             <br>
-                           <p>{{$admin->name}}</p>
+                           <p>{{$gerente->name}}</p>
                            <b>Email:</b>
                            <br>
-                          <p>{{$admin->email}}</p> 
+                          <p>{{$gerente->email}}</p> 
                           <b>Endereço:</b>
                           <br>
-                         <p>{{$admin->endereço}}</p>
+                         <p>{{$gerente->endereço}}</p>
                          <b>Telefone:</b>
                           <br>
-                         <p>{{$admin->telefone}}</p>
+                         <p>{{$gerente->telefone}}</p>
                          <b>CPF:</b>
                           <br>
-                         <p>{{$admin->cpf}}</p>
+                         <p>{{$gerente->cpf}}</p>
                          <b>Nascimento:</b>
                           <br>
-                         <p>{{$admin->nascimento}}</p>
+                         <p>{{$gerente->nascimento}}</p>
+                         
                          
                             
                 

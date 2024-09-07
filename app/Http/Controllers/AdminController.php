@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Gerente;
 use App\Models\Admin;
+use App\Models\Conta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,12 +27,12 @@ class AdminController extends Controller
     public function edit(Admin $admin){
         return view('admins.edit', compact('admin'));
     }
-    public function editUsuarios(){
+    public function editUsuarios(User $user){
         $gerentes = Gerente::all();
-        return view('admins.editUsers', compact('gerentes'));
+        return view('admins.editUsers', compact('gerentes'), compact('user'));
     }
-    public function editGerentes(){
-        return view('admins.editGerentes');
+    public function editGerentes(Gerente $gerente){
+        return view('admins.editGerentes', compact('gerente'));
     }
     public function create(){
         return view('admins.create');
@@ -47,8 +48,8 @@ class AdminController extends Controller
     public function show(Admin $admin){
         return view('admins.show', compact('admin'));
     }
-    public function showGerentes(User $user){
-        return view('admins.showGerentes');
+    public function showGerentes(Gerente $gerente){
+        return view('admins.showGerentes', compact('gerente'));
     }
     public function showUsuarios(User $user){
         return view('admins.showUsers');
@@ -71,13 +72,48 @@ class AdminController extends Controller
     }
 
     public function storeGerentes(Request $request){
-        
+        $conta = Conta::create([
+            'numero' => gerarNumero(),
+            'agencia' => gerarAgencia(),
+            'password' => gerarSenha(),
+            'saldo' => 0,
+            'limite' => 1000
+        ]);
            
-        User::create([
+        Gerente::create([
             'name' => $request->name,
-            'gerente' => Auth::guard('gerente')->user()->id,
+            'email' => $request->email,
+            'password' => $request->password,
+            'endereço' => $request->endereço,
+            'cpf' => $request->cpf,
+            'telefone' => $request->telefone,
+            'nascimento' => $request->nascimento,
             'conta_id' => $conta->id,
 
         ]);
+        return redirect()->route('admins.gerentes.index');
+}
+public function storeUsuarios(Request $request){
+    $conta = Conta::create([
+        'numero' => gerarNumero(),
+        'agencia' => gerarAgencia(),
+        'password' => gerarSenha(),
+        'saldo' => 0,
+        'limite' => 1000
+    ]);
+       
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password,
+        'endereço' => $request->endereço,
+        'cpf' => $request->cpf,
+        'telefone' => $request->telefone,
+        'nascimento' => $request->nascimento,
+        'conta_id' => $conta->id,
+        
+
+    ]);
+    return redirect()->route('users.index');
 }
 }
