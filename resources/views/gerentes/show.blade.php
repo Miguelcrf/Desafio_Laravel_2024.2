@@ -14,35 +14,27 @@
                         <form action="">
                             
                             <legend>
-                                <b>Visualizar Perfil</b>
+                                <b>Visualizar seu perfil</b>
                                 
                             </legend>
                             <b>Nome:</b>
                             <br>
-                           <p>{{$user->name}}</p>
+                           <p>{{$gerente->name}}</p>
                            <b>Email:</b>
                            <br>
-                          <p>{{$user->email}}</p> 
+                          <p>{{$gerente->email}}</p> 
                           <b>Endereço:</b>
                           <br>
-                         <p>{{$user->endereço}}</p>
+                         <p>{{$gerente->endereço}}</p>
                          <b>Telefone:</b>
                           <br>
-                         <p>{{$user->telefone}}</p>
+                         <p>{{$gerente->telefone}}</p>
                          <b>CPF:</b>
                           <br>
-                         <p>{{$user->cpf}}</p>
+                         <p>{{$gerente->cpf}}</p>
                          <b>Nascimento:</b>
                           <br>
-                         <p>{{ \Carbon\Carbon::parse($user->nascimento)->format('d/m/Y') }}</p>
-                         <br>
-                         <b>Gerente Responsável:</b>
-                         <br>
-                         @foreach($gerentes as $gerente)
-                         @if($gerente->id == $user->gerente_id)
-                         <p>{{ $gerente->name}}</p>
-                         @endif
-                         @endforeach
+                         <p>{{ \Carbon\Carbon::parse($gerente->nascimento)->format('d/m/Y') }}</p>
                          
                          
                             

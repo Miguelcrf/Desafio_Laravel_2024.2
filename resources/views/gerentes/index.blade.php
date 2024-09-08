@@ -20,11 +20,11 @@
                     </div>
                 </div>
            <span class="d-flex">
-                <a href="{{ route('gerentes.edit') }}" class="btn btn-info btn-sm">
+                <a href="{{ route('gerentes.edit', $gerente->id) }}" class="btn btn-info btn-sm">
             <i class="fas fa-edit"></i>
             </a>
 
-                <a href="#" class="btn btn-info btn-sm">
+                <a href="{{route('gerentes.show', $gerente->id)}}" class="btn btn-info btn-sm">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
                 <form method="post" action="#"

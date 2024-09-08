@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Gerente;
 class UserController extends Controller
 {
     public function index(){
@@ -20,7 +21,8 @@ class UserController extends Controller
       
     }
     public function show(User $user){
-        return view('users.show', compact('user'));
+        $gerentes = Gerente::all();
+        return view('users.show', compact('user', 'gerentes'));
     }
     
 }

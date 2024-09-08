@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edição de Administradores') }}
+            {{ __('Edição de Usuários') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                         <form action="{{Route('admins.usuarios.update', $user->id)}}" >
                             @csrf
                                 <legend>
-                                    <b>Editar Administrador</b>
+                                    <b>Editar Usuário</b>
                                 </legend>
                                 <br>
                                 <div class="inputBox">
@@ -58,6 +58,13 @@
                                     <input type="date" name="nascimento" id="nascimento" class="inputUser" value="{{$user->nascimento}}" required>
                                     
                                 </div>
+                                <br><br>
+                                <label for="gerente_id"> <b>Gerente Responsável</b></label>
+                                <select name="gerente_id" id="gerente_id" required>
+                                    @foreach($gerentes as $gerente)
+                                    <option value="{{$gerente->id}}"> {{$gerente->name}}</option>
+                                    @endforeach
+                                </select>
                                 <br><br>
                                 <button type="submit">
                                 enviar

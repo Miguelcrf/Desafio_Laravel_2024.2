@@ -30,7 +30,7 @@
             <i class="fas fa-edit"></i>
             </a>
 
-                <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm">
+                <a href="{{ route('gerentes.usuarios.show', $user->id) }}" class="btn btn-info btn-sm">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
                 <form method="post" action="/usuarios/remover/{{$user->id}}"

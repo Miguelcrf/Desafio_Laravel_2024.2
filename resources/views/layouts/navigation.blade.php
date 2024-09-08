@@ -21,6 +21,10 @@
                     <x-nav-link :href="route('admins.administradores.index')" :active="request()->routeIs('admins.administradores.index')">
                         {{ __('Administradores') }}
                     </x-nav-link>
+                    
+                    <x-nav-link :href="route('saques.index')" :active="request()->routeIs('saques.index')">
+                        {{ __('Saques e Depositos') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
                         {{ __('logout') }}
                     </x-nav-link>
@@ -29,6 +33,9 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Perfil') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
+                        {{ __('logout') }}
+                    </x-nav-link>
                     @endif
                     @if(Auth::guard('gerente')->check())
                     <x-nav-link :href="route('gerentes.index')" :active="request()->routeIs('gerentes.users.index')">
@@ -36,6 +43,12 @@
                     </x-nav-link>
                     <x-nav-link :href="route('gerentes.users.index')" :active="request()->routeIs('gerentes.users.index')">
                         {{ __('Usuários') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('saques.index')" :active="request()->routeIs('saques.index')">
+                        {{ __('Saques e Depositos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
+                        {{ __('logout') }}
                     </x-nav-link>
                     @endif
                 </div>

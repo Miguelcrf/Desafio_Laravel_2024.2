@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function indexGerentes(){
         $gerentes = Gerente::all();
         $users = User::all();
-        return view('admins.indexGerentes', compact('gerentes'), compact('users'));
+        return view('admins.indexGerentes', compact('gerentes'));
     }
     public function indexAdmins(){
         $admins = Admin::all();
@@ -29,7 +29,7 @@ class AdminController extends Controller
     }
     public function editUsuarios(User $user){
         $gerentes = Gerente::all();
-        return view('admins.editUsers', compact('gerentes'), compact('user'));
+        return view('admins.editUsers', compact('gerentes', 'user'));
     }
     public function editGerentes(Gerente $gerente){
         return view('admins.editGerentes', compact('gerente'));
@@ -52,7 +52,7 @@ class AdminController extends Controller
         return view('admins.showGerentes', compact('gerente'));
     }
     public function showUsuarios(User $user){
-        return view('admins.showUsers');
+        return view('admins.showUsers', compact('user'));
     }
     public function store(Request $request){
         
@@ -68,7 +68,7 @@ class AdminController extends Controller
         ]);
         
         
-        return redirect()->route('users.index');
+        return redirect()->route('admins.administradores.index');
     }
 
     public function storeGerentes(Request $request){
@@ -93,6 +93,7 @@ class AdminController extends Controller
         ]);
         return redirect()->route('admins.gerentes.index');
 }
+
 public function storeUsuarios(Request $request){
     $conta = Conta::create([
         'numero' => gerarNumero(),
@@ -111,9 +112,30 @@ public function storeUsuarios(Request $request){
         'telefone' => $request->telefone,
         'nascimento' => $request->nascimento,
         'conta_id' => $conta->id,
+        'gerente_id' => $request->gerente_id,
         
 
     ]);
-    return redirect()->route('users.index');
+    return redirect()->route('admins.users.index');
 }
+
+    function uptade(Request $request, Admin $admin){
+        $data = $request->all();
+        $admin->update($data);
+        return redirect()->route('admins.administradores.index');
+}
+    function destroy(Admin $admin){
+        $admin->delete();
+        return redirect()->route('admins.administradores.index');
+    }
+    
+    function destroyUsuarios(User $user){
+        $contas = Conta::all();
+        foreach($contas as $conta){
+            if($conta->id == $user->conta_id)
+            $conta->delete();
+        }
+        $user->delete();
+        return redirect()->route('admins.users.index');
+    }
 }

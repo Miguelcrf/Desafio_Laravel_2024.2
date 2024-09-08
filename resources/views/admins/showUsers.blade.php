@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Visualização de Perfil') }}
+            {{ __('Visualização de Usuários') }}
             <br>
         </h2>
     </x-slot>
@@ -14,7 +14,7 @@
                         <form action="">
                             
                             <legend>
-                                <b>Visualizar Perfil</b>
+                                <b>Visualizar Usuário</b>
                                 
                             </legend>
                             <b>Nome:</b>
@@ -35,14 +35,6 @@
                          <b>Nascimento:</b>
                           <br>
                          <p>{{ \Carbon\Carbon::parse($user->nascimento)->format('d/m/Y') }}</p>
-                         <br>
-                         <b>Gerente Responsável:</b>
-                         <br>
-                         @foreach($gerentes as $gerente)
-                         @if($gerente->id == $user->gerente_id)
-                         <p>{{ $gerente->name}}</p>
-                         @endif
-                         @endforeach
                          
                          
                             

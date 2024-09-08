@@ -11,8 +11,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="">
-                            
+                        <form action="{{Route('admins.usuarios.store')}}" method="POST">
+                            @csrf
                                 <legend>
                                     <b>Criar Usuário</b>
                                     
@@ -64,7 +64,7 @@
                                 <label for="gerente_id"> <b>Gerente Responsável</b></label>
                                 <select name="gerente_id" id="gerente_id" required>
                                     @foreach($gerentes as $gerente)
-                                    <option value="{{$gerente->name}}"></option>
+                                    <option value="{{$gerente->id}}"> {{$gerente->name}}</option>
                                     @endforeach
                                 </select>
                                 <br><br>
