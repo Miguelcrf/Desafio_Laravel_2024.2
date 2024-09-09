@@ -17,6 +17,10 @@
                                 <b>Visualizar seu perfil</b>
                                 
                             </legend>
+                            <b>Foto de Perfil:</b>
+                            <br>
+                            <img src="{{ asset('storage/' . $gerente->photo) }}" alt="Foto de {{ $gerente->name }}" width="150" height="150">
+                            <br>
                             <b>Nome:</b>
                             <br>
                            <p>{{$gerente->name}}</p>

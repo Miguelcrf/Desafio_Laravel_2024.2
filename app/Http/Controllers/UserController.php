@@ -20,6 +20,20 @@ class UserController extends Controller
       return view('users.create', compact('user'));
       
     }
+    public function update(){
+        $data = $request->all();
+    $user->update($data);
+
+       if ($request->hasFile('photo')) {
+        if ($user->photo && Storage::exists('public/' . $user->photo)) {
+            Storage::delete('public/' . $user->photo);
+        }
+        $imagePath = $request->file('photo')->store('photo', 'public');
+        $user->photo = $imagePath; 
+    }
+    $user->save();
+    return redirect()->route('admins.usuarios.index')->with('sucess', true);
+    }
     public function show(User $user){
         $gerentes = Gerente::all();
         return view('users.show', compact('user', 'gerentes'));

@@ -10,8 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="">
-                            
+                        <form action="{{route('users.update', $user->id)}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                                 <legend>
                                     <b>Editar seu Perfil</b>
                                 </legend>

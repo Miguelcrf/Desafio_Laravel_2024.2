@@ -31,6 +31,7 @@ class GerentesController extends Controller
     public function edit(Gerente $gerente){
         return view('gerentes.edit', compact('gerente'));
     }
+
     public function store(Request $request){
         $conta = Conta::create([
             'numero' => gerarNumero(),
@@ -55,6 +56,37 @@ class GerentesController extends Controller
         ]);
         return redirect()->Route('gerentes.users.index');
 }
+
+public function update(Request $request, Gerente $gerente){
+    $data = $request->all();
+    $gerente->update($data);
+    if ($request->hasFile('photo')) {
+        if ($user->photo && Storage::exists('public/' . $user->photo)) {
+            Storage::delete('public/' . $user->photo);
+        }
+        $imagePath = $request->file('photo')->store('photo', 'public');
+        $user->photo = $imagePath; 
+    }
+    $user->save();
+    return redirect()->route('admins.gerentes.index')->with('sucess', true);
+}
+
+public function updateUsers(Request $request, User $user){
+    $data = $request->all();
+    $user->update($data);
+
+       if ($request->hasFile('photo')) {
+        if ($user->photo && Storage::exists('public/' . $user->photo)) {
+            Storage::delete('public/' . $user->photo);
+        }
+        $imagePath = $request->file('photo')->store('photo', 'public');
+        $user->photo = $imagePath; 
+    }
+    $user->save();
+    return redirect()->route('admins.usuarios.index')->with('sucess', true);
+}
+
+
 public function showUsers(User $user){
     return view('gerentes.showUsers', compact('user'));
 }

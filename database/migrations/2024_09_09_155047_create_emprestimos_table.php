@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transfs', function (Blueprint $table) {
+        Schema::create('emprestimos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('remetente_id')->constrained('contas'); 
-            $table->foreignId('destinatario_id')->constrained('contas');
-            $table->double('valor'); 
+            $table->double('valor');
+            $table->foreignId('usuario_id')->constrained('contas');
+            $table->enum('status', ['nao_pago', 'pago', 'pendente', 'aprovado'])->default('pendente');
+
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transfs');
+        Schema::dropIfExists('emprestimos');
     }
 };

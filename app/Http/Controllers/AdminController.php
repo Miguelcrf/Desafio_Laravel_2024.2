@@ -133,18 +133,44 @@ public function storeUsuarios(Request $request){
     function update(Request $request, Admin $admin){
         $data = $request->all();
         $admin->update($data);
+        if ($request->hasFile('photo')) {
+            if ($user->photo && Storage::exists('public/' . $user->photo)) {
+                Storage::delete('public/' . $user->photo);
+            }
+            $imagePath = $request->file('photo')->store('photo', 'public');
+            $user->photo = $imagePath; 
+        }
+        $user->save();
         return redirect()->route('admins.administradores.index');
 }
     function updateGerentes(Request $request, Gerente $gerente){
         
     $data = $request->all();
     $gerente->update($data);
+    if ($request->hasFile('photo')) {
+        if ($user->photo && Storage::exists('public/' . $user->photo)) {
+            Storage::delete('public/' . $user->photo);
+        }
+        $imagePath = $request->file('photo')->store('photo', 'public');
+        $user->photo = $imagePath; 
+    }
+    $user->save();
     return redirect()->route('admins.gerentes.index')->with('sucess', true);
 }
 function updateUsuarios(Request $request, User $user){
-        
+     
+    
     $data = $request->all();
     $user->update($data);
+
+       if ($request->hasFile('photo')) {
+        if ($user->photo && Storage::exists('public/' . $user->photo)) {
+            Storage::delete('public/' . $user->photo);
+        }
+        $imagePath = $request->file('photo')->store('photo', 'public');
+        $user->photo = $imagePath; 
+    }
+    $user->save();
     return redirect()->route('admins.usuarios.index')->with('sucess', true);
 }
     function destroy(Admin $admin){

@@ -46,7 +46,12 @@
                     <x-nav-link :href="route('users.transferencia.index')" :active="request()->routeIs('transferencia.index')">
                         {{ __('Transferencias') }}
                     </x-nav-link>
-                    
+                    <x-nav-link :href="route('users.transferencias.extrato')" :active="request()->routeIs('users.transferencias.extrato')">
+                        {{ __('Extratos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('usuarios.emprestimos')" :active="request()->routeIs('usuarios.emprestimos')">
+                        {{ __('Emprestimos') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
                         {{ __('logout') }}
                     </x-nav-link>
@@ -70,8 +75,14 @@
                     <x-nav-link :href="route('gerentes.transferencia.index')" :active="request()->routeIs('gerentes.transferencia.index')">
                         {{ __('Transferencias') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('gerentes.extrato')" :active="request()->routeIs('extrato.index.index')">
+                    <x-nav-link :href="route('gerentes.transferencias.extrato')" :active="request()->routeIs('gerentes.transferencias.extrato')">
                         {{ __('Extratos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('gerentes.pendencias')" :active="request()->routeIs('gerentes.pendencias')">
+                        {{ __('Emprestimos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('gerentes.pendencias')" :active="request()->routeIs('gerentes.pendencias')">
+                        {{ __('Pendencias') }}
                     </x-nav-link>
                     <x-nav-link :href="route('logout')" :active="request()->routeIs('logout.index')">
                         {{ __('logout') }}
@@ -114,17 +125,7 @@
                 </x-dropdown>
             </div>
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
+           
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">

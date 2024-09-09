@@ -32,10 +32,12 @@ Route::delete('/usuarios/remover/{user}', [UserController::class, 'destroy'])->n
 Route::get('/usuarios/transferencia', [TransferenciaController::class, 'index'])->name('users.transferencia.index');
 Route::post('/usuarios/transferencia', [TransferenciaController::class, 'transferir'])->name('users.transferencia.processo');
 
-Route::get('/usuarios/extratos', [ExtratoController::class, 'indexUsuarios'])->name('usuarios.extrato');
+Route::get('/usuarios/extratos', [ExtratoController::class, 'indexUsuarios'])->name('users.transferencias.extrato');
 
+Route::get('/usuarios/emprestimos', [EmprestimoController::class, 'indexUsuarios'])->name('usuarios.emprestimos.index');
+Route::post('/usuarios/emprestimos/solicitar', [EmprestimoController::class, 'solicitarUsuarios'])->name('usuarios.emprestimos.solicitar');
+Route::post('/usuarios/emprestimos/pagar/{emprestimo}', [EmprestimoController::class, 'pagar'])->name('usuarios.emprestimos.pagar');
 
-    
 });
 
 
@@ -52,6 +54,8 @@ Route::middleware('gerente')->group(function(){
     Route::post('/gerentes', [GerentesController::class, 'store'])->name('gerentes.store');
     Route::get('/gerentes/usuarios/{user}', [GerentesController::class, 'showUsers'])->name('gerentes.usuarios.show');
     Route::get('/gerentes/{gerente}', [GerentesController::class, 'show'])->name('gerentes.show');
+    Route::put('/gerentes/usuarios/{user}', [GerentesController::class, 'updateUsers'])->name('gerentes.usuarios.update');
+    Route::put('/gerentes/{gerente}', [GerentesController::class, 'update'])->name('gerentes.update');
     
     Route::get('/gerentes/saqueseDepositos', [SaqueController::class, 'index'])->name('gerentes.saques.index');
     Route::get('/gerentes/saques', [SaqueController::class, 'indexSaques'])->name('gerentes.saque.index');
@@ -62,8 +66,13 @@ Route::middleware('gerente')->group(function(){
     Route::get('/gerentes/transferencia', [TransferenciaController::class, 'index'])->name('gerentes.transferencia.index');
 Route::post('/gerentes/transferencia', [TransferenciaController::class, 'transferir'])->name('gerentes.transferencia.processo');
 
-Route::get('/gerentes/extratos', [ExtratoController::class, 'indexGerentes'])->name('gerentes.extrato');
+Route::get('/gerentes/extratos', [ExtratoController::class, 'indexGerentes'])->name('gerentes.transferencias.extrato');
 
+Route::get('/gerentes/emprestimos', [EmprestimoController::class, 'indexGerentes'])->name('gerentes.emprestimos.index');
+Route::post('/gerentes/emprestimos/solicitar', [EmprestimoController::class, 'solicitarGerentes'])->name('gerentes.emprestimos.solicitar');
+Route::post('/gerentes/emprestimos/pagar/{emprestimo}', [EmprestimoController::class, 'pagar'])->name('gerentes.emprestimos.pagar');
+
+Route::get('/gerentes/pendencias', [PendenciasController::class, 'index'])->name('gerentes.pendencias');
 });
 
 

@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="{{Route('admins.gerentes.update', $gerente->id)}}">
+                        <form action="{{Route('gerentes.update', $gerente->id)}}">
                             
                                 <legend>
                                     <b>Editar seu perfil</b>

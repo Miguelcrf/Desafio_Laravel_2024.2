@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transfs', function (Blueprint $table) {
+        Schema::create('pendencias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('remetente_id')->constrained('contas'); 
-            $table->foreignId('destinatario_id')->constrained('contas');
-            $table->double('valor'); 
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transfs');
+        Schema::dropIfExists('pendencias');
     }
 };

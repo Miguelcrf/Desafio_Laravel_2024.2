@@ -37,11 +37,11 @@
                         </tbody>
                     </table>
     
-                    <!-- Formulário para gerar relatório -->
+                    <!-- Formulário que gerar relatório -->
                     <form action="{{ route('transferencias.gerarRelatorio') }}" method="GET">
                         @csrf
                         <div class="mb-4">
-                            <label for="filtro" class="block text-sm font-medium text-gray-700">Escolha o Filtro:</label>
+                            <label for="filtro" class="block text-sm font-medium text-gray-700">Escolha o periodo que deseja gera relatorio:</label>
                             <select name="filtro" id="filtro" class="mt-1 block w-full">
                                 <option value="mes">Mês Atual</option>
                                 <option value="3meses">Últimos 3 Meses</option>

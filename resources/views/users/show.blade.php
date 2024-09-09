@@ -17,6 +17,11 @@
                                 <b>Visualizar Perfil</b>
                                 
                             </legend>
+                            @if($user->photo!= NULL)
+                            <b>Foto de perfil: </b>
+                            <br>
+                            <img src="{{ asset('storage/' . $user->photo) }}" alt="Foto de {{ $user->name }}" width="150" height="150">
+                        @endif
                             <b>Nome:</b>
                             <br>
                            <p>{{$user->name}}</p>

@@ -40,6 +40,12 @@ class TransferenciaController extends Controller
         if($valor > $contaRemetente->saldo)
         return redirect()->back()->with('erro', 'saldo insuficiente!');
         
+        
+            $destinatario = User::where('conta_id', $contaDestinatario->id);
+            if(!$destinatario){
+                $destinatario = Gerente::where('conta_id', $contaDestinatario->id);
+            }
+          
             
             $contaRemetente->saldo -= $request->valor;
             $contaRemetente->save();
