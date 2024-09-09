@@ -1,0 +1,74 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Gerente API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/gerentes": {
+            "get": {
+                "tags": [
+                    "Gerentes"
+                ],
+                "summary": "Listar todos os gerentes",
+                "description": "Retorna a lista de todos os gerentes cadastrados",
+                "operationId": "6f4485643a4dc0be5a757c578e1a011c",
+                "responses": {
+                    "200": {
+                        "description": "Lista de gerentes retornada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "John Doe"
+                                            },
+                                            "photo": {
+                                                "type": "string",
+                                                "example": "url_da_foto.jpg"
+                                            },
+                                            "status": {
+                                                "type": "integer",
+                                                "example": 200
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Nenhum gerente encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "não foi encontrado nenhum registro"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 204
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Gerentes",
+            "description": "Gerentes"
+        }
+    ]
+}

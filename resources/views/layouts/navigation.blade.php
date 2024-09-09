@@ -49,7 +49,7 @@
                     <x-nav-link :href="route('users.transferencias.extrato')" :active="request()->routeIs('users.transferencias.extrato')">
                         {{ __('Extratos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('usuarios.emprestimos')" :active="request()->routeIs('usuarios.emprestimos')">
+                    <x-nav-link :href="route('usuarios.emprestimos.index')" :active="request()->routeIs('usuarios.emprestimos.index')">
                         {{ __('Emprestimos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
@@ -78,7 +78,7 @@
                     <x-nav-link :href="route('gerentes.transferencias.extrato')" :active="request()->routeIs('gerentes.transferencias.extrato')">
                         {{ __('Extratos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('gerentes.pendencias')" :active="request()->routeIs('gerentes.pendencias')">
+                    <x-nav-link :href="route('gerentes.emprestimos.index')" :active="request()->routeIs('gerentes.emprestimos.index')">
                         {{ __('Emprestimos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('gerentes.pendencias')" :active="request()->routeIs('gerentes.pendencias')">

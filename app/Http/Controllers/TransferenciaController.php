@@ -45,22 +45,36 @@ class TransferenciaController extends Controller
             if(!$destinatario){
                 $destinatario = Gerente::where('conta_id', $contaDestinatario->id);
             }
-          
-            
+            if($request->valor > $contaRemetente->limite){
+                
+                if(Auth::guard('web')->check()){
+                    $gerenteResponsavel = Gerente::where('id', Auth::guard('web')->user()->gerente_id);
+                    return redirect()->back()->with('erro', 'limite de transferencia ultrapassado. Por favor entre em contato com 
+                    seu gerente pelo telefone (<?= $gerenteResponsavel->telefone?>) ou pelo email (
+                    <?= $gerenteResponsavel->email ?> ) ');
+                }
+                Pendencias::create([
+                    'titulo' => 'limite de transferencia ultrapassado',
+                    'valor' => $request->valor,
+                    'conta_id' => $contaRemetente
+                    
+                ]);
+            }
+            else{
             $contaRemetente->saldo -= $request->valor;
             $contaRemetente->save();
 
             $contaDestinatario->saldo += $request->valor;
             $contaDestinatario->save();
-
+            
             Transfer::create([
                 'remetente_id' => $contaRemetente->id,
                 'destinatario_id' => $contaDestinatario->id,
                 'valor' => $valor,
             ]);
+        }
 
-
-        return redirect()->route('transferencia.form');
+        return redirect()->route('transferencias.index');
         
     }
 }

@@ -8,6 +8,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GerentesController;
 use App\Http\Controllers\SaqueController;
 use App\Http\Controllers\ExtratoController;
+use App\Http\Controllers\PendenciasController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/login', function () {
     return view('welcome');
@@ -117,6 +119,8 @@ Route::middleware('admin')->group(function(){
     Route::post('/admins/saques', [SaqueController::class, 'indexSaques'])->name('admins.saque.store');
     Route::post('/admins/depositos', [SaqueController::class, 'indexDepositos'])->name('usuarios.deposito.store');
     
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });
 
 

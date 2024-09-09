@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('pendencias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('pendencias');
+            $table->double('valor');
+            $table->ForeignId('conta_id')->constrained('contas');
         });
     }
 
