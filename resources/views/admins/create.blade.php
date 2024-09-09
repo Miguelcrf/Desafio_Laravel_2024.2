@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="{{Route('admins.store')}}" method="POST">
+                        <form action="{{Route('admins.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                                 <legend>
                                     <b>Criar Administrador</b>

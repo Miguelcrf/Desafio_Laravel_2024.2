@@ -56,6 +56,8 @@ class AdminController extends Controller
     }
     public function store(Request $request){
         
+        $imagemPath = $request->file('photo')->store('photos', 'public');
+
         Admin::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -63,7 +65,8 @@ class AdminController extends Controller
             'endereço' => $request->endereço,
             'cpf' => $request->cpf,
             'telefone' => $request->telefone,
-            'nascimento' => $request->nascimento
+            'nascimento' => $request->nascimento,
+            'photo' => $imagemPath
 
         ]);
         
@@ -72,6 +75,7 @@ class AdminController extends Controller
     }
 
     public function storeGerentes(Request $request){
+        $imagemPath = $request->file('photo')->store('photos', 'public');
         $conta = Conta::create([
             'numero' => gerarNumero(),
             'agencia' => gerarAgencia(),
@@ -89,13 +93,18 @@ class AdminController extends Controller
             'telefone' => $request->telefone,
             'nascimento' => $request->nascimento,
             'conta_id' => $conta->id,
-            'photo' => $request->photo
+            'photo' => $imagemPath
 
         ]);
         return redirect()->route('admins.gerentes.index');
 }
 
 public function storeUsuarios(Request $request){
+    if ($request->hasFile('photo')) {
+        $imagePath = $request->file('photo')->store('photos', 'public');
+    } else {
+        $imagePath = null;
+    }
     $conta = Conta::create([
         'numero' => gerarNumero(),
         'agencia' => gerarAgencia(),
@@ -114,6 +123,7 @@ public function storeUsuarios(Request $request){
         'nascimento' => $request->nascimento,
         'conta_id' => $conta->id,
         'gerente_id' => $request->gerente_id,
+        'photo' => $imagemPath
         
 
     ]);

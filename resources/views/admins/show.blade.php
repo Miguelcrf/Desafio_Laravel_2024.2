@@ -17,6 +17,10 @@
                                 <b>Visualizar Administrador</b>
                                 
                             </legend>
+                        
+                        <b>Foto de Perfil:</b>
+                        <br>
+                        <img src="{{ asset('storage/' . $admin->photo) }}" alt="Foto de {{ $admin->name }}" width="150" height="150">
                             <b>Nome:</b>
                             <br>
                            <p>{{$admin->name}}</p>
