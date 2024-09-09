@@ -20,6 +20,13 @@
                                 <br>
                                 <div class="inputBox">
                                     <br>
+                                    <label for="name">Foto de perfil</label>
+                                    <input type="file" name="photo" id="photo" class="inputUser" required>
+                                    
+                                </div>
+                                <br><br>
+                                <div class="inputBox">
+                                    <br>
                                     <label for="name">Nome Completo</label>
                                     <input type="text" name="name" id="name" class="inputUser" required>
                                     

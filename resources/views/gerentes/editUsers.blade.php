@@ -10,47 +10,61 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="">
-                            
+                        <form action="{{Route('admins.usuarios.update', $user->id)}}" >
+                            @csrf
                                 <legend>
                                     <b>Editar Usuário</b>
                                 </legend>
                                 <br>
                                 <div class="inputBox">
-                                    <input type="text" name="name" id="name" class="inputUser" required>
+                                    <br>
                                     <label for="name">Nome Completo</label>
+                                    <input type="text" name="name" id="name" class="inputUser" value="{{$user->name}}" required>
+                                    
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="email" id="email" class="inputUser" required>
                                     <label for="email">Email</label>
+                                    <input type="text" name="email" id="email" class="inputUser" value="{{$user->email}}" required>
+                                    
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="password" name="password" id="password" class="inputUser" required>
                                     <label for="password">Senha</label>
+                                    <input type="password" name="password" id="password" class="inputUser" value="{{$user->password}}"required>
+                                    
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="endereço" id="endereço" class="inputUser" placeholder="Rua xxx, numero xxxx" required>
                                     <label for="endereço">Endereço</label>
+                                    <input type="text" name="endereço" id="endereço" class="inputUser" value="{{$user->endereço}}" required>
+                                    
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="cpf" id="cpf" class="cpf" placeholder="xxx.xxx.xxx-xx" required>
                                     <label for="cpf">CPF</label>
+                                    <input type="text" name="cpf" id="cpf" class="cpf" value="{{$user->cpf}}" required>
+                                    
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="tel" name="telefone" id="telefone" class="inputUser" required>
                                     <label for="telefone">Telefone</label>
+                                    <input type="tel" name="telefone" id="telefone" class="inputUser" value="{{$user->telefone}}" required>
+                                    
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
                                     <label for="nascimento"><b>Data de Nascimento:</b></label>
-                                    <input type="date" name="nascimento" id="nascimento" class="inputUser" required>
+                                    <input type="date" name="nascimento" id="nascimento" class="inputUser" value="{{$user->nascimento}}" required>
                                     
                                 </div>
+                                <br><br>
+                                <label for="gerente_id"> <b>Gerente Responsável</b></label>
+                                <select name="gerente_id" id="gerente_id" required>
+                                    @foreach($gerentes as $gerente)
+                                    <option value="{{$gerente->id}}"> {{$gerente->name}}</option>
+                                    @endforeach
+                                </select>
                                 <br><br>
                                 <button type="submit">
                                 enviar

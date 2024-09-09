@@ -26,7 +26,7 @@
                     </div>
                 </div>
            <span class="d-flex">
-                <a href="{{ route('gerentes.users.edit') }}" class="btn btn-info btn-sm">
+                <a href="{{ route('gerentes.users.edit', $user->id) }}" class="btn btn-info btn-sm">
             <i class="fas fa-edit"></i>
             </a>
 

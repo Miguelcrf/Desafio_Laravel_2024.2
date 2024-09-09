@@ -17,6 +17,9 @@
                                 <b>Visualizar Gerente</b>
                                 
                             </legend>
+                            <b>Foto de Perfil:</b>
+                            <br>
+                           <p>{{$gerente->photo}}</p>
                             <b>Nome:</b>
                             <br>
                            <p>{{$gerente->name}}</p>

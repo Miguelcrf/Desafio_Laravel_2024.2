@@ -17,6 +17,7 @@ class Gerente extends Authenticatable
         'telefone',
         'nascimento',
         'cpf',
-        'conta_id'
+        'conta_id',
+        'photo'
     ];
 }

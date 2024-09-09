@@ -7,6 +7,7 @@ use App\Http\Controllers\TransferenciaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GerentesController;
 use App\Http\Controllers\SaqueController;
+use App\Http\Controllers\ExtratoController;
 
 Route::get('/login', function () {
     return view('welcome');
@@ -27,26 +28,47 @@ Route::get('/usuarios/{user}', [UserController::class, 'show'])->name('users.sho
 Route::post('/usuarios/create', [UserController::class, 'store'])->name('users.store');
 Route::put('/usuarios/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/usuarios/remover/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/usuarios/transferencia', [TransferenciaController::class, 'index'])->name('users.transferencia.index');
+Route::post('/usuarios/transferencia', [TransferenciaController::class, 'transferir'])->name('users.transferencia.processo');
+
+Route::get('/usuarios/extratos', [ExtratoController::class, 'indexUsuarios'])->name('usuarios.extrato');
+
+
+    
 });
+
+
+
 Route::middleware('gerente')->group(function(){
     Route::get('/dashboardGerente', function(){
         return view('dashboard');
     })->name('dashboard.gerente');
     Route::get('/gerentes', [GerentesController::class, 'index'])->name('gerentes.index');
     Route::get('/gerentes/usuarios', [GerentesController::class, 'indexUsers'])->name('gerentes.users.index');
-    Route::get('/gerentes/user/edit', [GerentesController::class, 'editUsers'])->name('gerentes.users.edit');
+    Route::get('/gerentes/edit/users/{user}', [GerentesController::class, 'editUsers'])->name('gerentes.users.edit');
     Route::get('/gerentes/user/create', [GerentesController::class, 'createUsers'])->name('gerentes.users.create');
     Route::get('/gerentes/edit/{gerente}', [GerentesController::class, 'edit'])->name('gerentes.edit');
     Route::post('/gerentes', [GerentesController::class, 'store'])->name('gerentes.store');
     Route::get('/gerentes/usuarios/{user}', [GerentesController::class, 'showUsers'])->name('gerentes.usuarios.show');
     Route::get('/gerentes/{gerente}', [GerentesController::class, 'show'])->name('gerentes.show');
     
-    Route::get('/saqueseDepositos', [SaqueController::class, 'index'])->name('saques.index');
-    Route::get('/saques', [SaqueController::class, 'indexSaques'])->name('saque.index');
-    Route::get('/depositos', [SaqueController::class, 'indexDepositos'])->name('deposito.index');
+    Route::get('/gerentes/saqueseDepositos', [SaqueController::class, 'index'])->name('gerentes.saques.index');
+    Route::get('/gerentes/saques', [SaqueController::class, 'indexSaques'])->name('gerentes.saque.index');
+    Route::get('/gerentes/depositos', [SaqueController::class, 'indexDepositos'])->name('gerentes.deposito.index');
+    Route::post('/gerentes/depositos', [SaqueController::class, 'storeDepositos'])->name('gerentes.deposito.store');
+    Route::post('/gerentes/saques', [SaqueController::class, 'storeSaques'])->name('gerentes.saque.store');
     
+    Route::get('/gerentes/transferencia', [TransferenciaController::class, 'index'])->name('gerentes.transferencia.index');
+Route::post('/gerentes/transferencia', [TransferenciaController::class, 'transferir'])->name('gerentes.transferencia.processo');
+
+Route::get('/gerentes/extratos', [ExtratoController::class, 'indexGerentes'])->name('gerentes.extrato');
 
 });
+
+
+
+
 
 Route::middleware('admin')->group(function(){
     Route::get('/dashboardAdmin', function(){
@@ -64,9 +86,9 @@ Route::middleware('admin')->group(function(){
     Route::get('/admins/edit/gerentes/{gerente}', [AdminController::class, 'editGerentes'])->name('admins.gerentes.edit');
     Route::get('/admins/edit/usuarios/{user}', [AdminController::class, 'editUsuarios'])->name('admins.usuarios.edit');
 
-    Route::put('/admins/edit/{admin}', [AdminController::class, 'update'])->name('admins.update');
-    Route::put('/admins/edit/{gerente}', [AdminController::class, 'updateGerentes'])->name('admins.gerentes.update');
-    Route::put('/admins/edit/{user}', [AdminController::class, 'updateUsuarios'])->name('admins.usuarios.update');
+    Route::put('/admins/update/{admin}', [AdminController::class, 'update'])->name('admins.update');
+    Route::put('/admins/{gerente}', [AdminController::class, 'updateGerentes'])->name('admins.gerentes.update');
+    Route::put('/admins/{user}', [AdminController::class, 'updateUsuarios'])->name('admins.usuarios.update');
 
     Route::get('/admins/{admin}', [AdminController::class, 'show'])->name('admins.show');
     Route::get('/admins/gerentes/{gerente}', [AdminController::class, 'showGerentes'])->name('admins.gerentes.show');
@@ -80,16 +102,17 @@ Route::middleware('admin')->group(function(){
     Route::post('/admins/gerentes/delete/{gerente}', [AdminController::class, 'destroyGerentes'])->name('admins.gerentes.delete');
     Route::post('/admins/usuarios/delete/{user}', [AdminController::class, 'destroyUsuarios'])->name('admins.usuarios.delete');
 
-    Route::get('/saqueseDepositos', [SaqueController::class, 'index'])->name('saques.index');
-    Route::get('/saques', [SaqueController::class, 'indexSaques'])->name('saque.index');
-    Route::get('/depositos', [SaqueController::class, 'indexDepositos'])->name('deposito.index');
-    Route::post('/depositos', [SaqueController::class, 'storeDepositos'])->name('deposito.store');
+    Route::get('/admins/saqueseDepositos', [SaqueController::class, 'index'])->name('admins.saques.index');
+    Route::get('/admins/saques', [SaqueController::class, 'indexSaques'])->name('admins.saque.index');
+    Route::get('/admins/depositos', [SaqueController::class, 'indexDepositos'])->name('admins.deposito.index');
+    Route::post('/admins/saques', [SaqueController::class, 'indexSaques'])->name('admins.saque.store');
+    Route::post('/admins/depositos', [SaqueController::class, 'indexDepositos'])->name('usuarios.deposito.store');
+    
 });
 
 
 
-Route::get('/transferencia', [TransferenciaController::class, 'index'])->name('transferencia.index');
-Route::post('/transferencia', [TransferenciaController::class, 'transferir'])->name('transferencia.processo');
+
 
 
 

@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
+use App\Models\Conta;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class TransferenciaController extends Controller
@@ -10,20 +14,49 @@ class TransferenciaController extends Controller
     {
         return view('transferencias.index');
     }
-
+ 
     public function transferir(Request $request)
     {
-        // Validação dos dados
-        $request->validate([
-            'nome_destinatario' => 'required|string|max:255',
-            'conta_destinatario' => 'required|numeric',
-            'valor' => 'required|numeric|min:0.01',
-            'descricao' => 'nullable|string|max:500',
-        ]);
+        if(Auth::guard('gerente')->check()){
+        $remetente = Auth::guard('gerente')->user();
+        }
+        if(Auth::guard('web')->check()){
+            $remetente = Auth::guard('web')->user();
+            }
+        $contaRemetente = Conta::where('id', $remetente->conta_id);
+        $agencia = $request->agencia;
+        $numero = $request->numero;
+        $valor = $request->valor;
+        $senha = $request->senha;
+        $destinatario;
+        
+       $contaDestinatario = Conta::where('agencia', $agencia)
+       ->where('numero', $numero)
+       ->first();
+       if(!$contaDestinatario)
+       return redirect()->back()->with('erro', 'conta inexistente');
+    if($senha != $contaRemetente->password)
+    return redirect()->back()->with('erro', 'senha incorreta!'); 
+        if($valor > $contaRemetente->saldo)
+        return redirect()->back()->with('erro', 'saldo insuficiente!');
+        
+            
+            $contaRemetente->saldo -= $request->valor;
+            $contaRemetente->save();
 
-        // Lógica de processamento da transferência
+            $contaDestinatario->saldo += $request->valor;
+            $contaDestinatario->save();
 
-        return redirect()->route('transferencia.form')->with('success', 'Transferência realizada com sucesso!');
+            Transfer::create([
+                'remetente_id' => $contaRemetente->id,
+                'destinatario_id' => $contaDestinatario->id,
+                'valor' => $valor,
+            ]);
+
+
+        return redirect()->route('transferencia.form');
+        
     }
 }
+
 

@@ -21,8 +21,9 @@ class GerentesController extends Controller
         $users = User::all();
         return view('gerentes.indexUsers', compact('gerentes', 'users'));
     }
-    public function editUsers(){
-        return view('gerentes.editUsers');
+    public function editUsers(User $user){
+        $gerentes = Gerente::all();
+        return view('gerentes.editUsers', compact('user', 'gerentes'));
     }
     public function createUsers(){
         return view('gerentes.create');

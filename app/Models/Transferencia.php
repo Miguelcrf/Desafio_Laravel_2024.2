@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transferencia extends Model
 {
-    use HasFactory;
+    protected $table = 'transferencias';
+    protected $fillable = [
+        'remetente_id',
+        'destinatario_id',
+        'valor',
+        
+    ];
 }

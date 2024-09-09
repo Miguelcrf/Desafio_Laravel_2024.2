@@ -14,6 +14,7 @@ class Conta extends Model
        'numero',
        'saldo',
        'limite',
-       'password' 
+       'password',
+       
     ];
 }

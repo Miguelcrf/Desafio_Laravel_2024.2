@@ -89,6 +89,7 @@ class AdminController extends Controller
             'telefone' => $request->telefone,
             'nascimento' => $request->nascimento,
             'conta_id' => $conta->id,
+            'photo' => $request->photo
 
         ]);
         return redirect()->route('admins.gerentes.index');
@@ -119,10 +120,22 @@ public function storeUsuarios(Request $request){
     return redirect()->route('admins.users.index');
 }
 
-    function uptade(Request $request, Admin $admin){
+    function update(Request $request, Admin $admin){
         $data = $request->all();
         $admin->update($data);
         return redirect()->route('admins.administradores.index');
+}
+    function updateGerentes(Request $request, Gerente $gerente){
+        
+    $data = $request->all();
+    $gerente->update($data);
+    return redirect()->route('admins.gerentes.index')->with('sucess', true);
+}
+function updateUsuarios(Request $request, User $user){
+        
+    $data = $request->all();
+    $user->update($data);
+    return redirect()->route('admins.usuarios.index')->with('sucess', true);
 }
     function destroy(Admin $admin){
         $admin->delete();

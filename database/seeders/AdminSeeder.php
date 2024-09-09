@@ -21,7 +21,8 @@ class AdminSeeder extends Seeder
         'endereço' => 'Rua Rosa Sffeir',
         'telefone' => '(32) 98708 3438',
         'nascimento'=> '2004/11/05',
-        'cpf' => '12345678910'
+        'cpf' => '12345678910',
+        'photo' =>fake()->imageUrl(360, 360, 'profile', true)
        ]);
     }
 }

@@ -10,8 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="{{Route('admins.usuarios.update', $user->id)}}" >
+                        <form action="{{Route('admins.usuarios.update', $user->id)}}" method="POST" >
                             @csrf
+                            @method('PUT')
                                 <legend>
                                     <b>Editar Usuário</b>
                                 </legend>

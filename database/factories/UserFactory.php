@@ -38,7 +38,8 @@ class UserFactory extends Factory
             'nascimento' => $this->faker->date(),
             'cpf' => fake()->numerify('###.###.###-##'),
             'gerente_id' => fake()->randomElement($gerente),
-            'conta_id' => $conta->id
+            'conta_id' => $conta->id,
+            'photo' =>fake()->imageUrl(360, 360, 'profile', true)
 
 
         ];

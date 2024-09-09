@@ -26,7 +26,8 @@ class User extends Authenticatable
         'nascimento',
         'cpf',
         'conta_id',
-        'gerente_id'
+        'gerente_id',
+        'photo'
     ];
     /**
      * The attributes that should be hidden for serialization.

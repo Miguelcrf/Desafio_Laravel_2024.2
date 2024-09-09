@@ -11,6 +11,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+
+
+
                     @if(Auth::guard('admin')->check())
                     <x-nav-link :href="route('admins.users.index')" :active="request()->routeIs('admins.users.index')">
                         {{ __('Usuários') }}
@@ -22,32 +26,54 @@
                         {{ __('Administradores') }}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('saques.index')" :active="request()->routeIs('saques.index')">
+                    <x-nav-link :href="route('gerentes.saques.index')" :active="request()->routeIs('gerentes.saques.index')">
                         {{ __('Saques e Depositos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
                         {{ __('logout') }}
                     </x-nav-link>
                     @endif
+
+                    
+
+
+
+
                     @if(Auth::guard('web')->check())
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Perfil') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('users.transferencia.index')" :active="request()->routeIs('transferencia.index')">
+                        {{ __('Transferencias') }}
+                    </x-nav-link>
+                    
                     <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
                         {{ __('logout') }}
                     </x-nav-link>
                     @endif
+
+
+
+
+                    
+
                     @if(Auth::guard('gerente')->check())
-                    <x-nav-link :href="route('gerentes.index')" :active="request()->routeIs('gerentes.users.index')">
+                    <x-nav-link :href="route('gerentes.index')" :active="request()->routeIs('gerentes.index')">
                         {{ __('Perfil') }}
                     </x-nav-link>
                     <x-nav-link :href="route('gerentes.users.index')" :active="request()->routeIs('gerentes.users.index')">
                         {{ __('Usuários') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('saques.index')" :active="request()->routeIs('saques.index')">
+                    <x-nav-link :href="route('gerentes.saques.index')" :active="request()->routeIs('gerentes.saques.index')">
                         {{ __('Saques e Depositos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('logout')" :active="request()->routeIs('admins.administradores.index')">
+                    <x-nav-link :href="route('gerentes.transferencia.index')" :active="request()->routeIs('gerentes.transferencia.index')">
+                        {{ __('Transferencias') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('gerentes.extrato')" :active="request()->routeIs('extrato.index.index')">
+                        {{ __('Extratos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('logout')" :active="request()->routeIs('logout.index')">
                         {{ __('logout') }}
                     </x-nav-link>
                     @endif

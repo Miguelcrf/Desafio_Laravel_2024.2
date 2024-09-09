@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('telefone');
             $table->date('nascimento');
             $table->string('cpf');
+            $table->string('photo');
             
 
             $table->foreignId('conta_id')->constrained();

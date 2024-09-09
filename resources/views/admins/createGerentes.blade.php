@@ -11,13 +11,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center items-center w-full h-full">
-                        <form action="{{Route('admins.gerentes.store')}}" method="POST">
+                        <form action="{{Route('admins.gerentes.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                                 <legend>
                                     <b>Criar Gerente</b>
                                     
                                 </legend>
                                 <br>
+                                <div class="inputBox">
+                                    <br>
+                                    <label for="name">Foto de perfil</label>
+                                    <input type="file" name="photo" id="photo" class="inputUser" required>
+                                    
+                                </div>
+                                <br><br>
                                 <div class="inputBox">
                                     <br>
                                     <label for="name">Nome Completo</label>

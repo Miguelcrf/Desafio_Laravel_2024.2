@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('transfs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('remetente_id')->constrained('users');
+            $table->foreignId('destinatario_id')->constrained('users');
+            $table->double('valor'); 
         });
     }
 

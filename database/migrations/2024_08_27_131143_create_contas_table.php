@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('agencia');
             $table->string('numero');
-            $table->double('saldo');
-            $table->double('limite');
+            $table->decimal('saldo', 15, 2);
+            $table->decimal('limite', 15, 2);
             $table->string('password');
             
         });

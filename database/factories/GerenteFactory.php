@@ -26,7 +26,8 @@ class GerenteFactory extends Factory
             'telefone' => $this->faker->phoneNumber(),
             'nascimento' => $this->faker->date(),
             'cpf' => fake()->numerify('###.###.###-##'),
-            'conta_id' => $conta->id
+            'conta_id' => $conta->id,
+            'photo' =>fake()->imageUrl(360, 360, 'profile', true)
         ];
     }
 }

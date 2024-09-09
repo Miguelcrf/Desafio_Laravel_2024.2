@@ -17,6 +17,14 @@
                     @endif
                     @if(Auth::guard('gerente')->check())
                     {{ __("Você está logado como gerente!") }}
+                    <form action="">
+                        <br><br>
+                    <div class=" flex border-2">
+                        
+                    </div>
+                    </form>
+
+                    
                     @endif
 
                 </div>
