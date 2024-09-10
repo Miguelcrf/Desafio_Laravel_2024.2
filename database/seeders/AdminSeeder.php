@@ -14,15 +14,6 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-       DB::table("admins")->insert([
-        'name' => 'Miguel Oliveira',
-        'email' => 'miguel.oliveira@codejr.com.br',
-        'password' => Hash::make('051104'),
-        'endereço' => 'Rua Rosa Sffeir',
-        'telefone' => '(32) 98708 3438',
-        'nascimento'=> '2004/11/05',
-        'cpf' => '12345678910',
-        'photo' =>fake()->imageUrl(360, 360, 'profile', true)
-       ]);
+        Admin::factory(10)->create();
     }
 }
