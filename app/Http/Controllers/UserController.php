@@ -34,9 +34,18 @@ class UserController extends Controller
     $user->save();
     return redirect()->route('admins.usuarios.index')->with('sucess', true);
     }
+
     public function show(User $user){
         $gerentes = Gerente::all();
         return view('users.show', compact('user', 'gerentes'));
+    }
+
+    public function delete(User $user){
+        $conta = Conta::where('id', $user->conta_id);
+        $user->delete();
+        $conta->delete();
+    
+        return redirect()->route('users.index');
     }
     
 }

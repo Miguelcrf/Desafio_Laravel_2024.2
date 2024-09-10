@@ -29,7 +29,7 @@ Route::get('/usuarios/create', [UserController::class, 'create'])->name('users.c
 Route::get('/usuarios/{user}', [UserController::class, 'show'])->name('users.show');
 Route::post('/usuarios/create', [UserController::class, 'store'])->name('users.store');
 Route::put('/usuarios/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/usuarios/remover/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::delete('/usuarios/remover/{user}', [UserController::class, 'destroy'])->name('users.delete');
 
 Route::get('/usuarios/transferencia', [TransferenciaController::class, 'index'])->name('users.transferencia.index');
 Route::post('/usuarios/transferencia', [TransferenciaController::class, 'transferir'])->name('users.transferencia.processo');
@@ -58,6 +58,8 @@ Route::middleware('gerente')->group(function(){
     Route::get('/gerentes/{gerente}', [GerentesController::class, 'show'])->name('gerentes.show');
     Route::put('/gerentes/usuarios/{user}', [GerentesController::class, 'updateUsers'])->name('gerentes.usuarios.update');
     Route::put('/gerentes/{gerente}', [GerentesController::class, 'update'])->name('gerentes.update');
+    Route::post('/gerentes/delete/{gerente}', [GerentesController::class, 'destroy'])->name('gerentes.delete');
+    Route::post('/gerentes/usuarios/delete/{gerente}', [GerentesController::class, 'destroyUsuarios'])->name('gerentes.usuarios.delete');
     
     Route::get('/gerentes/saqueseDepositos', [SaqueController::class, 'index'])->name('gerentes.saques.index');
     Route::get('/gerentes/saques', [SaqueController::class, 'indexSaques'])->name('gerentes.saque.index');

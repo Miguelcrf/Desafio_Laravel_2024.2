@@ -93,4 +93,21 @@ public function showUsers(User $user){
 public function show(Gerente $gerente){
     return view('gerentes.show', compact('gerente'));
 }
+
+function destroyUsuarios(User $user){
+    $conta = Conta::where('id', $user->conta_id);
+    $user->delete();
+    $conta->delete();
+
+    return redirect()->route('admins.users.index');
+}
+
+
+function destroy(Gerente $gerente){
+    $conta = Conta::where('id', $gerente->conta_id);
+    $gerente->delete();
+    $conta->delete();
+
+    return redirect()->route('admins.gerentes.index');
+}
 }

@@ -27,7 +27,7 @@
                 <a href="{{Route('admins.gerentes.show', $gerente->id)}}" class="btn btn-info btn-sm">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
-                <form method="post" action="#"
+                <form method="post" action="{{route('admins.gerentes.delete', $gerente->id)}}"
             onsubmit="return confirm('tem certeza?')">
                 @csrf
                 

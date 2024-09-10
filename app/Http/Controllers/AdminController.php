@@ -179,12 +179,17 @@ function updateUsuarios(Request $request, User $user){
     }
     
     function destroyUsuarios(User $user){
-        $contas = Conta::all();
-        foreach($contas as $conta){
-            if($conta->id == $user->conta_id)
-            $conta->delete();
-        }
+        $conta = Conta::where('id', $user->conta_id);
         $user->delete();
+        $conta->delete();
+
         return redirect()->route('admins.users.index');
+    }
+    function destroyGerentes(Gerente $gerente){
+        $conta = Conta::where('id', $gerente->conta_id);
+        $gerente->delete();
+        $conta->delete();
+
+        return redirect()->route('admins.gerentes.index');
     }
 }

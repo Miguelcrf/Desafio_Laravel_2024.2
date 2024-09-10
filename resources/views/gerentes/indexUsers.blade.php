@@ -33,7 +33,7 @@
                 <a href="{{ route('gerentes.usuarios.show', $user->id) }}" class="btn btn-info btn-sm">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
-                <form method="post" action="/usuarios/remover/{{$user->id}}"
+                <form method="post" action="{{ route('gerentes.usuarios.delete', $user->id) }}"
             onsubmit="return confirm('tem certeza?')">
                 @csrf
                 
